@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, Pause, SkipForward, SkipBack, Volume2 } from 'lucide-react';
-import albumPhonk from '../assets/album_phonk.png';
-
-const tracks = [
-  { id: 1, title: 'Nitro Demon', genre: 'Phonk', duration: '3:24', cover: albumPhonk },
-  { id: 2, title: 'Neon Horizon', genre: 'Synthwave', duration: '4:15', cover: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop' },
-  { id: 3, title: 'Neural Uplink', genre: 'Cyberpunk', duration: '5:02', cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=300&auto=format&fit=crop' },
-  { id: 4, title: 'Deep Space', genre: 'Ambient', duration: '6:30', cover: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=300&auto=format&fit=crop' },
-];
 
 export default function TrackPlayer() {
-  const [activeTrack, setActiveTrack] = useState(tracks[0]);
+  const [tracks, setTracks] = useState([]);
+  const [activeTrack, setActiveTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(30);
 
+  useEffect(() => {
+    fetch('/api/tracks')
+      .then(res => res.json())
+      .then(data => {
+        setTracks(data.data);
+        if (data.data.length > 0) setActiveTrack(data.data[0]);
+      })
+      .catch(err => console.error("Error fetching tracks:", err));
+  }, []);
+
   const togglePlay = () => setIsPlaying(!isPlaying);
+
+  if (!activeTrack) return null;
 
   return (
     <section id="tracks" className="py-24 relative">
