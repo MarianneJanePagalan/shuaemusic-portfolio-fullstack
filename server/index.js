@@ -11,47 +11,19 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Mock Data for Tracks
+// Track Data — Real Spotify releases
 const tracks = [
   {
     id: 1,
-    title: 'Neon Drift',
+    title: 'Tonight',
     artist: 'SHUAE',
-    genre: 'Synthwave',
-    duration: '3:45',
-    cover: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop',
-    audioUrl: 'https://open.spotify.com/track/51u2fs9OO7FgRcq4Y7zKEO?si=09c5d7ddcb044440',
-    spotifyEmbedUrl: 'https://open.spotify.com/embed/track/51u2fs9OO7FgRcq4Y7zKEO'
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/track/51u2fs9OO7FgRcq4Y7zKEO?utm_source=generator'
   },
   {
     id: 2,
-    title: 'Midnight Run',
+    title: 'Vibrant',
     artist: 'SHUAE',
-    genre: 'Phonk',
-    duration: '2:30',
-    cover: 'https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=400&auto=format&fit=crop',
-    audioUrl: 'https://open.spotify.com/track/22budU4E2GuTnytiTWK56K?si=30172e05a75f42d8',
-    spotifyEmbedUrl: 'https://open.spotify.com/embed/track/22budU4E2GuTnytiTWK56K'
-  },
-  {
-    id: 3,
-    title: 'Cyber City',
-    artist: 'SHUAE',
-    genre: 'Cyberpunk',
-    duration: '4:12',
-    cover: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400&auto=format&fit=crop',
-    audioUrl: null,
-    spotifyEmbedUrl: null
-  },
-  {
-    id: 4,
-    title: 'Void Walker',
-    artist: 'SHUAE',
-    genre: 'Ambient',
-    duration: '5:58',
-    cover: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop',
-    audioUrl: null,
-    spotifyEmbedUrl: null
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/track/22budU4E2GuTnytiTWK56K?utm_source=generator'
   }
 ];
 
