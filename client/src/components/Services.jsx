@@ -22,7 +22,7 @@ const services = [
   }
 ];
 
-export default function Services() {
+export default function Services({ onInquire }) {
   return (
     <section id="services" className="py-24 relative bg-black/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,32 +36,41 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
-              className="glassmorphism rounded-2xl p-8 border border-white/5 hover:border-magenta/50 transition-all duration-500 group relative overflow-hidden"
+              className="glassmorphism rounded-2xl p-8 border border-white/5 hover:border-magenta/50 transition-all duration-500 group relative overflow-hidden flex flex-col"
             >
               {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-magenta/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-magenta/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10 flex flex-col flex-1">
                 <div className="w-16 h-16 rounded-xl bg-white/5 flex items-center justify-center mb-6 shadow-inner">
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">
-                  {service.description}
-                </p>
+                <p className="text-gray-400 mb-8 leading-relaxed">{service.description}</p>
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-gray-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-neonCyan mr-3"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-neonCyan mr-3 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 pt-8 border-t border-white/10">
-                  <button className="text-magenta font-bold tracking-wider hover:text-white transition-colors uppercase text-sm">
-                    Inquire Now &rarr;
+
+                {/* Inquire Now button — pushes to bottom via mt-auto */}
+                <div className="mt-auto pt-8 border-t border-white/10 mt-8">
+                  <button
+                    onClick={() => onInquire(service.title)}
+                    className="group/btn flex items-center gap-2 text-magenta font-bold tracking-wider hover:text-white
+                               transition-colors duration-200 uppercase text-sm focus:outline-none
+                               focus-visible:ring-2 focus-visible:ring-magenta focus-visible:ring-offset-2
+                               focus-visible:ring-offset-transparent"
+                  >
+                    Inquire Now
+                    <span className="inline-block translate-x-0 group-hover/btn:translate-x-1.5 transition-transform duration-200">
+                      →
+                    </span>
                   </button>
                 </div>
               </div>
@@ -72,3 +81,4 @@ export default function Services() {
     </section>
   );
 }
+

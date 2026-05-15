@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import TrackPlayer from './components/TrackPlayer'
@@ -7,6 +7,14 @@ import StudioGear from './components/StudioGear'
 import Contact from './components/Contact'
 
 function App() {
+  const [selectedService, setSelectedService] = useState('');
+
+  const handleInquire = (serviceTitle) => {
+    setSelectedService(serviceTitle);
+    // Smooth scroll to contact section
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background relative selection:bg-magenta selection:text-white">
       {/* Ambient background glow */}
@@ -19,9 +27,9 @@ function App() {
       <main>
         <Hero />
         <TrackPlayer />
-        <Services />
+        <Services onInquire={handleInquire} />
         <StudioGear />
-        <Contact />
+        <Contact selectedService={selectedService} />
       </main>
       <footer className="relative border-t border-white/5 mt-20 overflow-hidden">
         <div className="absolute inset-0 -z-10 pointer-events-none">

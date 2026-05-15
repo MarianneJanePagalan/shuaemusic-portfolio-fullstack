@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send } from 'lucide-react';
 
-export default function Contact() {
+export default function Contact({ selectedService = '' }) {
   const [formData, setFormData] = useState({ name: '', email: '', service: 'Custom Beat Production', message: '' });
   const [status, setStatus] = useState('');
+
+  // Auto-fill message when a service is pre-selected from the Services section
+  useEffect(() => {
+    if (!selectedService) return;
+    setFormData(prev => ({
+      ...prev,
+      service: selectedService,
+      message: prev.message || `Hi, I'm interested in your ${selectedService} service. I'd love to discuss my project!`
+    }));
+    setStatus(''); // clear any previous submission status
+  }, [selectedService]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +44,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative" aria-label="Contact">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glassmorphism rounded-3xl p-8 md:p-12 border border-magenta/20 shadow-[0_0_30px_rgba(255,0,255,0.1)] relative overflow-hidden">
           {/* Subtle cyan glow inside form */}
