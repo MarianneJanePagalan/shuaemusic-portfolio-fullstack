@@ -1,24 +1,57 @@
-import React from 'react';
-import { Play } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Play, ChevronDown } from 'lucide-react';
 import heroBg from '../assets/hero_bg.png';
 
+const TYPEWRITER_PHRASES = [
+  'Sculpting Soundscapes',
+  'Producing Records',
+  'Engineering Vibes',
+  'Building Empires',
+];
+
 export default function Hero() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const phrase = TYPEWRITER_PHRASES[phraseIndex];
+    let timeout;
+    if (!deleting && displayed.length < phrase.length) {
+      timeout = setTimeout(() => setDisplayed(phrase.slice(0, displayed.length + 1)), 80);
+    } else if (!deleting && displayed.length === phrase.length) {
+      timeout = setTimeout(() => setDeleting(true), 2200);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setPhraseIndex((i) => (i + 1) % TYPEWRITER_PHRASES.length);
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, phraseIndex]);
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="about" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBg} 
-          alt="Studio Setup" 
+        <img
+          src={heroBg}
+          alt="Studio Setup"
           className="w-full h-full object-cover opacity-30 mix-blend-screen"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background"></div>
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mt-20">
+        <p className="text-neonCyan text-sm font-mono tracking-[0.3em] uppercase mb-6 opacity-80">
+          Music Producer · Sound Designer
+        </p>
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 drop-shadow-2xl">
-          <span className="block text-white mb-2">Sonic Architect</span>
-          <span className="block text-gradient">Sculpting Soundscapes / Producing Records</span>
+          <span className="block text-white mb-2">SHUAEMUSIC</span>
+          <span className="block text-gradient min-h-[1.2em]">
+            {displayed}
+            <span className="animate-pulse text-neonCyan">|</span>
+          </span>
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-300 mb-10 font-light">
           Elevate your artistry with premium custom beats, cinematic scoring, and professional mix/mastering.
@@ -39,6 +72,12 @@ export default function Hero() {
           </a>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <ChevronDown className="h-6 w-6 text-gray-500" />
+      </div>
     </section>
   );
 }
+

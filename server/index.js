@@ -19,7 +19,7 @@ const tracks = [
     artist: 'SHUAE',
     genre: 'Synthwave',
     duration: '3:45',
-    cover: '/src/assets/album_phonk.png'
+    cover: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop'
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const tracks = [
     artist: 'SHUAE',
     genre: 'Phonk',
     duration: '2:30',
-    cover: '/src/assets/album_phonk.png'
+    cover: 'https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=400&auto=format&fit=crop'
   },
   {
     id: 3,
@@ -35,7 +35,15 @@ const tracks = [
     artist: 'SHUAE',
     genre: 'Cyberpunk',
     duration: '4:12',
-    cover: '/src/assets/album_phonk.png'
+    cover: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    id: 4,
+    title: 'Void Walker',
+    artist: 'SHUAE',
+    genre: 'Ambient',
+    duration: '5:58',
+    cover: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop'
   }
 ];
 
