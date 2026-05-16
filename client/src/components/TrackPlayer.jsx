@@ -14,7 +14,7 @@ const TRACKS = [
   },
   {
     id: 2,
-    title: 'Vibrant',
+    title: 'Radiant',
     artist: 'SHUAE',
     accentClass: 'text-magenta',
     borderClass: 'border-magenta/15',
