@@ -4,9 +4,6 @@ import { Speaker, Mic2, MonitorUp } from 'lucide-react';
 export default function StudioGear() {
   return (
     <section id="gear" className="py-24 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between mb-16">
           <div className="md:w-1/2 mb-8 md:mb-0">
