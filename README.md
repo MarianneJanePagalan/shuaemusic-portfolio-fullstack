@@ -1,16 +1,25 @@
-# React + Vite
+# Full-Stack Music Producer Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A state-driven portfolio website engineered for music producers and audio engineers. This project demonstrates a decoupled, event-driven client-server architecture utilizing secure RESTful API integrations and external media content delivery networks.
 
-Currently, two official plugins are available:
+## 🛠️ Technical Stack & Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend (Client Package):** Built using **React 19**, **Vite** (for optimized hot module replacement), and **Tailwind CSS**. Features custom glassmorphism components, floating headers, structural animations via `framer-motion`, and dynamic viewports.
+- **Backend (Server Package):** Engineered using **Node.js** and **Express**. Employs **CORS** configuration to handle cross-origin authorization handshakes securely between independent deployment environments.
+- **Media Pipeline:** Embedded integration utilizing external structural assets over **Spotify CDNs** to manage data streaming efficiency without taxing server-side system storage.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Repository Structure (NPM Workspaces Monorepo)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+shuaemusic-portfolio-fullstack/
+├── package.json              # Master control config defining workspaces
+├── README.md                 # System documentation
+├── client/                   # Frontend SPA React environment
+│   ├── src/                  # State-driven functional components
+│   ├── public/               # Global visual assets
+│   └── package.json          # Client-side UI dependencies
+└── server/                   # Backend Express environment
+    ├── index.js              # RESTful API router and server configuration
+    └── package.json          # Node.js backend dependencies
