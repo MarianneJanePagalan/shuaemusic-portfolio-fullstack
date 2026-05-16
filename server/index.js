@@ -53,6 +53,11 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
+// GET /api/health
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'Backend is humming!', message: 'Music Producer API is online' });
+});
+
 // Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
