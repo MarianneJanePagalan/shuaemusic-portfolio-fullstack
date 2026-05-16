@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// GET / — Root welcome
+app.get('/', (req, res) => {
+  res.send('Welcome to the ShuaeMusic API Production Server. Systems are operational.');
+});
+
 // Track Data — Real Spotify releases
 const tracks = [
   {
