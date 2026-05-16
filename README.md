@@ -13,11 +13,11 @@ A state-driven portfolio website engineered for music producers and audio engine
 ## 📡 Active API Endpoints (Production)
 
 The Express backend application layers are live and handling routing traffic at the following base URL:
-🔗 **Base API URL:** `https://server-production-3be0.up.railway.app`
+🔗 **Base API URL:** https://server-production-3be0.up.railway.app
 
 ### System Check Verification:
-- **Health Check Route:** `https://server-production-3be0.up.railway.app/api/health`
-- **Dynamic Data Payload Route:** `https://server-production-3be0.up.railway.app/api/tracks`
+- **Health Check Route:** https://server-production-3be0.up.railway.app/api/health
+- **Dynamic Data Payload Route:** https://server-production-3be0.up.railway.app/api/tracks
 ---
 
 ## 📂 Repository Structure (NPM Workspaces Monorepo)
